@@ -1,0 +1,18 @@
+server:
+    port: 8084
+
+spring:
+  application:
+    name: delivery-service
+
+  kafka:
+    bootstrap-servers: ${BOOTSTRAP_SERVER}
+    consumer:
+      group-id: ${GROUP_ID}
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties.spring.json.trusted-packages: "*"
+      enable-auto-commit: false
+
+  config:
+    import: optional:classpath:env.properties
