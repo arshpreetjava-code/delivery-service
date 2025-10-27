@@ -40,7 +40,7 @@ jobs:
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > delivery_key.pem
           chmod 600 delivery_key.pem
-          ssh -o StrictHostKeyChecking=no -i delivery_key.pem ${{ secrets.EC2_HOSTNAME }}@${{ secrets.EC2_PUBLIC_IP }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i delivery_key.pem ubuntu@ec2-65-0-81-181.ap-south-1.compute.amazonaws.com << 'EOF'
             sudo docker pull userbeta/delivery-service:1.0.0
             sudo docker stop delivery-service || true
             sudo docker rm delivery-service || true
